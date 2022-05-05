@@ -7,7 +7,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=150, unique=True)
     price = models.PositiveIntegerField()
     #ingredients
-    #category
+    category = models.ForeignKey("Category", related_name='dishes', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -18,6 +18,9 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=64)
     dishes = models.ManyToManyField("Dish", related_name='ingredients')
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     ''' Category model
@@ -25,4 +28,6 @@ class Category(models.Model):
     name = models.CharField(max_length=64, unique=True)
     big_photo = models.ImageField(upload_to='category/big/')
     small_photo = models.ImageField(upload_to='category/small/')
-    dishes = models.ForeignKey("Dish", related_name='category', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

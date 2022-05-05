@@ -1,8 +1,7 @@
 from django.urls import path
 
-from .views import DishView, CategoryView
+from .views import MenuView
 
 urlpatterns = [
-    path('dishes/', DishView.as_view(), name='dishes'),
-    path('categories/', CategoryView.as_view(), name='categories'),
+    path('menu/', MenuView.as_view(), name='menu'),
 ]
