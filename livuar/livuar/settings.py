@@ -32,6 +32,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 MY_APPS = [
     'dishes',
+    'news',
 ]
 
 INSTALLED_APPS = [
