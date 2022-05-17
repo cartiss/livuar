@@ -34,6 +34,7 @@ MY_APPS = [
     'dishes',
     'news',
     'reservation',
+    'main',
 ]
 
 INSTALLED_APPS = [
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
 
     'rest_framework',
+    'django_jinja',
+    'ckeditor',
 ] + MY_APPS
 
 MIDDLEWARE = [
@@ -61,6 +64,12 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'livuar.urls'
 
 TEMPLATES = [
+    {
+        "BACKEND": "django_jinja.backend.Jinja2",
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        "APP_DIRS": True,
+        "OPTIONS": {}
+    },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
@@ -131,10 +140,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
